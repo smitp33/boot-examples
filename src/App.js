@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import {Grid, Row, Col, Nav, NavItem, Glyphicon} from 'react-bootstrap'
 
@@ -10,41 +9,36 @@ class App extends Component {
   }
 
 
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-        <hr/>
+
         <Grid fluid={true}>
-          <Row>
-            <Col sm={10} md={10} lg={10}>
-              <Nav bsStyle="pills" activeKey={1} onSelect={this.handleSelect}>
-              <NavItem disabled={true}>
-                Hello
-              </NavItem>
-              <NavItem>
-                <Glyphicon glyph="home" />
-              </NavItem>
-              <NavItem eventKey={0}>
-                <Glyphicon glyph="home" />
-              </NavItem>
-                <NavItem eventKey={1} href="/home">NavItem 1 content</NavItem>
-                <NavItem eventKey={2} title="Item">NavItem 2 content</NavItem>
-              </Nav>
-            </Col>
+          <Row style={{ backgroundColor: 'lightblue'}}>
+
             <Col sm={2} md={2} lg={2}>
-              <Nav bsStyle="pills" pullRight={true} activeKey={1} onSelect={this.handleSelect}>
-                <NavItem eventKey={3}>
-                  <Glyphicon glyph="align-left" />
-                </NavItem>
-              </Nav>
+              <span>
+                  <i className="fa fa-bullseye fa-lg">
+                   &nbsp;ENTRAL
+                  </i>
+              </span>
             </Col>
+
+            <Col sm={6} md={8} lg={8}>
+              <span>
+                  <i className="fa fa-search fa-lg">
+                   &nbsp;Search for an Application, API or person
+                  </i>
+              </span>
+            </Col>
+
+            <Col sm={2} md={2} lg={2} style={{textAlign: 'right'}}>
+              <span>
+                  <i className="fa fa-cog fa-lg" />
+              </span>
+            </Col>
+
           </Row>
           <Row>
             <Col sm={2} md={1} lg={1}>2</Col>
