@@ -3,13 +3,18 @@ import './App.css';
 import {Grid, Row, Col, Nav, NavItem, Glyphicon, Navbar,
         FormGroup, FormControl} from 'react-bootstrap'
 import AvatarCard from './common/AvatarCard'
-import { Link, Switch, Route, withRouter} from 'react-router-dom';
+import { Switch, Route, withRouter} from 'react-router-dom';
 import DashBoardPage from './dashboard/DashBoardPage'
 import ApplicationsPage from './applications/ApplicationsPage'
 import NoMatch from './common/NoMatch'
+import {LinkContainer} from 'react-router-bootstrap' // Used to integrate to react-router - replaces native 'Link'
+import {NavHr, NavSpacer}  from './common/NavAddComponents'
 
 
 class App extends Component {
+
+
+
 
 
   handleSelect = (selectedKey) => {
@@ -46,7 +51,7 @@ class App extends Component {
 
                   <Col sm={10} md={10} lg={10} >
                     <Navbar.Collapse>
-                      <Nav>
+
 
                         <Navbar.Form pullLeft>
 
@@ -62,9 +67,6 @@ class App extends Component {
                         </Navbar.Form>
 
 
-
-
-                      </Nav>
                       <Nav pullRight>
 
                         <NavItem eventKey={99} href="#">
@@ -82,29 +84,34 @@ class App extends Component {
 
           </Row>
           <Row>
+
             <Col className="sidebar" sm={2} md={2} lg={2} >
-              &nbsp;
-              &nbsp;
+
+
               <Nav bsStyle="pills" stacked activeKey={this.props.location.pathname} onSelect={this.handleSelect}>
+                <NavSpacer style={{ height: '10px'}}/>
                 <AvatarCard style={{ marginTop: '5px', marginLeft: '10px'}} width='40px' avatar_url="https://avatars3.githubusercontent.com/u/810438?s=60&amp;v=4"
                             name="Philip Smith" message="Welcome" notifications={3}/>
-                <hr style={{ marginLeft: '10px', marginRight: '10px'}}/>
-                &nbsp;
-                <NavItem eventKey="/" ><i className="fa fa-dashboard fa-lg"/><Link to='/'>&nbsp;&nbsp;&nbsp;DASHBOARD</Link></NavItem>
-                &nbsp;
-                <NavItem eventKey="/applications" ><i className="fa fa-th fa-lg"/><Link to='/applications'>&nbsp;&nbsp;&nbsp;APPLICATIONS</Link></NavItem>
-                <NavItem eventKey="/apis" ><i className="fa fa-arrows-h fa-lg"/><Link to='/apis'>&nbsp;&nbsp;&nbsp;APIs</Link></NavItem>
+                <NavHr style={{ marginLeft: '10px', marginRight: '10px'}}/>
+                <NavSpacer style={{ height: '10px'}}/>
+                <LinkContainer to="/" exact={true}>
+                  <NavItem eventKey="/" ><i className="fa fa-dashboard fa-lg"/>&nbsp;&nbsp;&nbsp;DASHBOARD</NavItem>
+                </LinkContainer>
+                <NavSpacer style={{ height: '40px'}}/>
+                <LinkContainer to="/applications">
+                  <NavItem eventKey="/applications" ><i className="fa fa-th fa-lg"/>&nbsp;&nbsp;&nbsp;APPLICATIONS</NavItem>
+                </LinkContainer>
+                <LinkContainer to="/apis">
+                  <NavItem eventKey="/apis" ><i className="fa fa-arrows-h fa-lg"/>&nbsp;&nbsp;&nbsp;APIs</NavItem>
+                </LinkContainer>
                 <NavItem eventKey={4} ><i className="fa fa-plus-circle fa-lg"/>&nbsp;&nbsp;&nbsp;NEW APPLICATION</NavItem>
               </Nav>
-
-
-
-
             </Col>
 
             <Col sm={10} md={10} lg={10}>
               <Switch>
                 <Route exact path="/" component={DashBoardPage}/>
+                <Route exact path="/dashboard" component={DashBoardPage}/>
                 <Route path="/applications" component={ApplicationsPage}/>
                 <Route component={NoMatch}/>
               </Switch>
@@ -119,4 +126,7 @@ class App extends Component {
   }
 }
 
+// withRouter binds to the routers props to the App so that they can
+// be accessed from within this components
+// - Alternative would be to do via Redux
 export default withRouter(App);
