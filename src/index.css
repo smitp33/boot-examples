@@ -3,6 +3,7 @@ body {
   padding: 0;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
   -webkit-print-color-adjust:exact;
+  font-size: 12px !important;
 }
 
 .container-fluid {
@@ -44,15 +45,37 @@ body {
   display: inline-flex !important;
 }
 
-
 .sidebar {
   min-height: 500px;
-  background-color: #2e2e2e;
+  background-color: #344152;
   color: white;
+  padding-right: 0px;
 }
 
 .footer {
   min-height: 50px;
-  background-color: #2e2e2e;
+  background-color: #344152;
   color: white;
+}
+
+.nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover {
+  background-color: #283240;
+  border-left: 5px solid #55a9ff;
+  border-radius: 0px;
+
+}
+
+.nav-pills>li>a, .nav-pills>li>a:focus, .nav-pills>li>a:hover {
+  background-color: #344152;
+  border-left: 5px solid transparent;
+  border-radius: 0px;
+  color: white;
+}
+
+a {
+  color: white !important;
+}
+
+a.focus, a.hover, a:focus, a:hover  {
+  text-decoration: none !important;
 }
